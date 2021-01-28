@@ -22,10 +22,10 @@ let clientView = {
             center: data.center,
             bounds: data.bounds
         }
-        ('#mapCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
-        ('#heartImgCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
-        ('#mapPattern').css({"top": `${data.height}px`, "width": `${data.width}px`, "height": `${data.height}px`});
-        ('#heartImgPattern').css({"top": `${data.height}px`, "width": `${data.width}px`, "height": `${data.height}px`});
+        $('#mapCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
+        $('#heartImgCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
+        $('#mapPattern').css({"top": `${data.height}px`, "width": `${data.width}px`, "height": `${data.height}px`});
+        $('#heartImgPattern').css({"top": `${data.height}px`, "width": `${data.width}px`, "height": `${data.height}px`});
         this.buildMaps(data.maptiler_key);
     },
     buildMaps: function(stylekey){
