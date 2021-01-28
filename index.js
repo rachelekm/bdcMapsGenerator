@@ -6,15 +6,10 @@ let clientView = {
         $.ajax({
             url: 'http://localhost:8080/jobData', 
             method: 'GET',  
-            dataType: 'json',
             success: clientView.handleCustomData,
             error: function(xhr, ajaxOptions, thrownError){
                 var errorMessage = xhr.status + ': ' + xhr.statusText;
                 throw new Error(errorMessage, thrownError);
-            },
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                "Accept": "application/json"
             }
         });
     },
