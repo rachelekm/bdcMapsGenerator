@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+#mapCover, #heartImgCover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2100px;
+    height: 2100px;
+    z-index: 1;
+}
+
+#mapPattern, #heartImgPattern{
+    position: absolute;
+    top: 2100px;
+    left: 0;
+    width: 2100px;
+    height: 2100px;
+    z-index: 1;
+}
+
+#heartImgCover, #heartImgPattern {
+    z-index: 3;
+}
