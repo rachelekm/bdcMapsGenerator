@@ -50,7 +50,7 @@ let clientView = {
         coverMap.on('error', e => {
     		if (e && e.error !== 'Error: Not Found');
 		});
-        coverMap.fitBounds(modelData.bounds);
+        coverMap.fitBounds(modelData.customData.bounds);
         //pattern
         let patternMap = new mapboxgl.Map({
             container: 'mapPattern',
@@ -65,7 +65,7 @@ let clientView = {
         patternMap.on('error', e => {
     		if (e && e.error !== 'Error: Not Found');
 		});
-        patternMap.fitBounds(modelData.bounds);
+        patternMap.fitBounds(modelData.customData.bounds);
     }
 }
 
