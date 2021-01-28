@@ -15,12 +15,15 @@ let clientView = {
     },
     handleCustomData: function(data){
         mapboxgl.accessToken = data.mapbox_key;
+	let sw = new mapboxgl.LngLat(data.bounds._southWest.lng, data.bounds._southWest.lat);
+	let ne = new mapboxgl.LngLat(data.bounds._northEast.lng, data.bounds._northEast.lat);
+	let bounds = new mapboxgl.LngLatBounds(sw, ne);
         modelData.customData = {
             zoom: data.zoom,
             w: data.width,
             h: data.height,
             center: data.center,
-            bounds: data.bounds
+            bounds: bounds
         }
         $('#mapCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
         $('#heartImgCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
@@ -47,7 +50,7 @@ let clientView = {
         coverMap.on('error', e => {
     		if (e && e.error !== 'Error: Not Found');
 		});
-        coverMap.fitBounds(modelData.customData.bounds);
+        coverMap.fitBounds(bounds);
         //pattern
         let patternMap = new mapboxgl.Map({
             container: 'mapPattern',
@@ -62,7 +65,7 @@ let clientView = {
         patternMap.on('error', e => {
     		if (e && e.error !== 'Error: Not Found');
 		});
-        patternMap.fitBounds(modelData.customData.bounds);
+        patternMap.fitBounds(bounds);
     }
 }
 
