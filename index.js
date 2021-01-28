@@ -26,7 +26,7 @@ let clientView = {
         $('#heartImgCover').css({"width": `${data.width}px`, "height": `${data.height}px`});
         $('#mapPattern').css({"top": `${data.height}px`, "width": `${data.width}px`, "height": `${data.height}px`});
         $('#heartImgPattern').css({"top": `${data.height}px`, "width": `${data.width}px`, "height": `${data.height}px`});
-        this.buildMaps(data.maptiler_key);
+        clientView.buildMaps(data.maptiler_key);
     },
     buildMaps: function(stylekey){
         //let deafultZoom = 12; 
