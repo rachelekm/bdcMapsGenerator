@@ -86,7 +86,7 @@ let clientView = {
                 let zoomObj = obj.zooms.find(obj => obj.zoom >= browserZoom);
                 let lineWidth = zoomObj.lineWidth * Math.pow(1.2, (browserZoom - zoomObj.zoom)); 
                 //if lines look small maybe * 2 here?  	
-                return {name: obj.name, line: lineWidth};
+                return {name: obj.name, line: (lineWidth*2)};
             });	
             return zoomArray;
         };
