@@ -41,7 +41,7 @@ let clientView = {
             container: 'mapCover',
             center: modelData.customData.center,
             zoom: modelData.customData.zoom,
-            style: 'https://api.maptiler.com/maps/7ef6e1c9-c7f2-4017-ac35-b3c1f12c2559/style.json?key=NkGQXS2WkjB9EhqLEv0M',
+            style: `${modelData.mapbox_Styles.cover_url}${stylekey}`,
             interactive: false,
             preserveDrawingBuffer: true,
             fadeDuration: 0,
