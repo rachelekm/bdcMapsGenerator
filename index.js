@@ -41,7 +41,7 @@ let clientView = {
             container: 'mapCover',
             center: modelData.customData.center,
             zoom: modelData.customData.zoom,
-            style: `${modelData.mapbox_Styles.cover_url}${stylekey}`,
+            style: `${modelData.mapbox_Styles.style_url}${stylekey}`,
             interactive: false,
             preserveDrawingBuffer: true,
             fadeDuration: 0,
