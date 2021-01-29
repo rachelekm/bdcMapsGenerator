@@ -12,5 +12,22 @@ let modelData = {
         {name: 'road_motorway', zooms: [{zoom: 5.999, lineWidth: 0}, {zoom: 6, lineWidth: 2}, {zoom: 7, lineWidth: 3}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
         {name: 'road_minor', zooms: [{zoom: 12.999, lineWidth: 0}, {zoom: 13, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
         {name: 'road_link', zooms: [{zoom: 12.999, lineWidth: 0}, {zoom: 13, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+
+        {name: 'tunnel_motorway_link', zooms: [{zoom: 10.999, lineWidth: 0}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_link', zooms: [{zoom: 12.999, lineWidth: 0}, {zoom: 13, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_secondary_tertiary', zooms: [{zoom: 10.999, lineWidth: 0}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_secondary_tertiary_construction', zooms: [{zoom: 10.999, lineWidth: 0}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_trunk_primary', zooms: [{zoom: 8.999, lineWidth: 0}, {zoom: 9, lineWidth: 3}, {zoom: 10, lineWidth: 4}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_trunk_primary_construction', zooms: [{zoom: 8.999, lineWidth: 0}, {zoom: 9, lineWidth: 3}, {zoom: 10, lineWidth: 4}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_motorway', zooms: [{zoom: 5.999, lineWidth: 0}, {zoom: 6, lineWidth: 2}, {zoom: 7, lineWidth: 3}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'tunnel_motorway_construction', zooms: [{zoom: 5.999, lineWidth: 0}, {zoom: 6, lineWidth: 2}, {zoom: 7, lineWidth: 3}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        
+        {name: 'bridge_motorway_link', zooms: [{zoom: 10.999, lineWidth: 0}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'bridge_link',zooms: [{zoom: 12.999, lineWidth: 0}, {zoom: 13, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'bridge_secondary_tertiary',  zooms: [{zoom: 10.999, lineWidth: 0}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'bridge_secondary_tertiary_construction', zooms: [{zoom: 10.999, lineWidth: 0}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'bridge_trunk_primary', zooms: [{zoom: 8.999, lineWidth: 0}, {zoom: 9, lineWidth: 3}, {zoom: 10, lineWidth: 4}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'bridge_trunk_primary_construction', zooms: [{zoom: 8.999, lineWidth: 0}, {zoom: 9, lineWidth: 3}, {zoom: 10, lineWidth: 4}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]},
+        {name: 'bridge_motorway', zooms: [{zoom: 5.999, lineWidth: 0}, {zoom: 6, lineWidth: 2}, {zoom: 7, lineWidth: 3}, {zoom: 11, lineWidth: 5}, {zoom: 15, lineWidth: 7}]}
     ]
 };
