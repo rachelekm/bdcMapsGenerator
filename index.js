@@ -67,7 +67,10 @@ let clientView = {
     		if (e && e.error !== 'Error: Not Found'){
  			throw new Error('Error with building pattern map: ' + e);
 		}
-	    });
+        });
+
+        coverMap.fitBounds(modelData.customData.bounds);
+        patternMap.fitBounds(modelData.customData.bounds);
 
         coverMap.on('load', function(){
             patternMap.on('load', function(){
@@ -75,9 +78,6 @@ let clientView = {
                 clientView.adjustTrafficStyle(patternMap, 'Pattern');
             });
         });
-
-        coverMap.fitBounds(modelData.customData.bounds);
-        patternMap.fitBounds(modelData.customData.bounds);
     },
     adjustTrafficStyle: function(map, type){ 
         let browserZoom = modelData.customData.zoom;
@@ -105,8 +105,10 @@ let clientView = {
         getZoomArray().then((array) => {
             return paintRoads(array);
         }).then(() => {
-            let divString = '#map' + type + '-done';
-            $(divString).css('visibility', 'hidden');
+            map.once('idle', function(){
+                let divString = '#map' + type + '-done';
+                $(divString).css('visibility', 'hidden');
+            });
         }).catch((e) => {
             throw new Error('Error in adjust traffic styles: ' + e);
         });
