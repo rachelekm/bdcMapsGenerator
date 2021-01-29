@@ -52,8 +52,6 @@ let clientView = {
  			throw new Error('Error with building cover map: ' + e);
 		    }
 	    });
-        coverMap.fitBounds(modelData.customData.bounds);
-        clientView.adjustTrafficStyle(coverMap, 'Cover');
         //pattern
         let patternMap = new mapboxgl.Map({
             container: 'mapPattern',
@@ -70,8 +68,16 @@ let clientView = {
  			throw new Error('Error with building pattern map: ' + e);
 		}
 	    });
+
+        coverMap.once('idle', function(){
+            patternMap.once('idle', function(){
+                clientView.adjustTrafficStyle(coverMap, 'Cover');
+                clientView.adjustTrafficStyle(patternMap, 'Pattern');
+            });
+        });
+
+        coverMap.fitBounds(modelData.customData.bounds);
         patternMap.fitBounds(modelData.customData.bounds);
-        clientView.adjustTrafficStyle(patternMap, 'Pattern');
     },
     adjustTrafficStyle: function(map, type){ 
         let browserZoom = modelData.customData.zoom;
