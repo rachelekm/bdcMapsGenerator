@@ -14,6 +14,7 @@ let clientView = {
         });
     },
     handleCustomData: function(data){
+	    console.log('in handle custom data');
         mapboxgl.accessToken = data.mapbox_key;
 	let sw = new mapboxgl.LngLat(data.bounds._southWest.lng, data.bounds._southWest.lat);
 	let ne = new mapboxgl.LngLat(data.bounds._northEast.lng, data.bounds._northEast.lat);
@@ -37,6 +38,7 @@ let clientView = {
        // let bearing = modelData.map.getBearing(); //data.bearing
        // let pitch = modelData.map.getPitch();  //data.pitch
         //cover
+	    console.log('in build maps');
         let coverMap = new mapboxgl.Map({
             container: 'mapCover',
             center: modelData.customData.center,
@@ -48,8 +50,10 @@ let clientView = {
             attributionControl: false
         });
         coverMap.on('error', e => {
-    		if (e && e.error !== 'Error: Not Found');
-		});
+    		if (e && e.error !== 'Error: Not Found'){
+ 			throw new Error('Error with building cover map: ' + e);
+		}
+	});
         coverMap.fitBounds(modelData.customData.bounds);
         //pattern
         let patternMap = new mapboxgl.Map({
@@ -63,8 +67,10 @@ let clientView = {
             attributionControl: false
         });
         patternMap.on('error', e => {
-    		if (e && e.error !== 'Error: Not Found');
-		});
+    		if (e && e.error !== 'Error: Not Found'){
+ 			throw new Error('Error with building pattern map: ' + e);
+		}
+	});
         patternMap.fitBounds(modelData.customData.bounds);
     }
 }
