@@ -69,8 +69,8 @@ let clientView = {
 		}
 	    });
 
-        coverMap.once('idle', function(){
-            patternMap.once('idle', function(){
+        coverMap.on('load', function(){
+            patternMap.on('load', function(){
                 clientView.adjustTrafficStyle(coverMap, 'Cover');
                 clientView.adjustTrafficStyle(patternMap, 'Pattern');
             });
