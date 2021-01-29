@@ -14,11 +14,10 @@ let clientView = {
         });
     },
     handleCustomData: function(data){
-	    console.log('in handle custom data');
         mapboxgl.accessToken = data.mapbox_key;
-	let sw = new mapboxgl.LngLat(data.bounds._southWest.lng, data.bounds._southWest.lat);
-	let ne = new mapboxgl.LngLat(data.bounds._northEast.lng, data.bounds._northEast.lat);
-	let bounds = new mapboxgl.LngLatBounds(sw, ne);
+	    let sw = new mapboxgl.LngLat(data.bounds._southWest.lng, data.bounds._southWest.lat);
+	    let ne = new mapboxgl.LngLat(data.bounds._northEast.lng, data.bounds._northEast.lat);
+	    let bounds = new mapboxgl.LngLatBounds(sw, ne);
         modelData.customData = {
             zoom: data.zoom,
             w: data.width,
@@ -38,7 +37,6 @@ let clientView = {
        // let bearing = modelData.map.getBearing(); //data.bearing
        // let pitch = modelData.map.getPitch();  //data.pitch
         //cover
-	    console.log('in build maps');
         let coverMap = new mapboxgl.Map({
             container: 'mapCover',
             center: modelData.customData.center,
@@ -52,9 +50,10 @@ let clientView = {
         coverMap.on('error', e => {
     		if (e && e.error !== 'Error: Not Found'){
  			throw new Error('Error with building cover map: ' + e);
-		}
-	});
+		    }
+	    });
         coverMap.fitBounds(modelData.customData.bounds);
+        clientView.adjustTrafficStyle(coverMap, 'Cover');
         //pattern
         let patternMap = new mapboxgl.Map({
             container: 'mapPattern',
@@ -70,9 +69,42 @@ let clientView = {
     		if (e && e.error !== 'Error: Not Found'){
  			throw new Error('Error with building pattern map: ' + e);
 		}
-	});
+	    });
         patternMap.fitBounds(modelData.customData.bounds);
-    }
+        clientView.adjustTrafficStyle(patternMap, 'Pattern');
+    },
+    adjustTrafficStyle: function(map, type){ 
+        let browserZoom = modelData.customData.zoom;
+        const getZoomArray = async function(){
+            let zoomArray = await modelData.trafficLayers.map(obj => {
+                let zoomObj = obj.zooms.find(obj => obj.zoom >= browserZoom);
+                let lineWidth = zoomObj.lineWidth * Math.pow(1.2, (browserZoom - zoomObj.zoom)); 
+                //lines look small on output, so multiply by 2      	
+                return {name: obj.name, line: (lineWidth*2)};
+            });	
+            return zoomArray;
+        };
+        const paintRoads = async function(arr){
+            try {
+                await arr.forEach(async(obj) => {
+                    await map.setPaintProperty(obj.name, 'line-width', obj.line);
+                });
+                return;
+            }
+            catch(e){
+                throw e;
+            }
+        };  
+    
+        getZoomArray().then((array) => {
+            return paintRoads(array);
+        }).then(() => {
+            let divString = '#map' + type + '-done';
+            $(divString).css('visibility', 'hidden');
+        }).catch((e) => {
+            throw new Error('Error in adjust traffic styles: ' + e);
+        });
+    },
 }
 
 $(clientView.initiateModelLoad());
