@@ -6,9 +6,6 @@ let clientView = {
         $.ajax({
             url: 'https://bdcbuildpdfapp.herokuapp.com/jobData', 
             method: 'GET',  
-	    beforeSend: function(request) {
-    		request.setRequestHeader("Access-Control-Allow-Origin", "*");
-  	    },
             success: clientView.handleCustomData,
             error: function(xhr, ajaxOptions, thrownError){
                 var errorMessage = xhr.status + ': ' + xhr.statusText;
