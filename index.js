@@ -4,7 +4,7 @@ let clientView = {
     initiateModelLoad: function(){
         //update url to heroku when deployed 
         $.ajax({
-            url: 'http://localhost:8080/jobData', 
+            url: 'https://bdcbuildpdfapp.herokuapp.com/jobData', 
             method: 'GET',  
             success: clientView.handleCustomData,
             error: function(xhr, ajaxOptions, thrownError){
