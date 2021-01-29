@@ -85,8 +85,8 @@ let clientView = {
             let zoomArray = await modelData.trafficLayers.map(obj => {
                 let zoomObj = obj.zooms.find(obj => obj.zoom >= browserZoom);
                 let lineWidth = zoomObj.lineWidth * Math.pow(1.2, (browserZoom - zoomObj.zoom)); 
-                //lines look small on output, so multiply by 2      	
-                return {name: obj.name, line: (lineWidth*2)};
+                //if lines look small maybe * 2 here?  	
+                return {name: obj.name, line: lineWidth};
             });	
             return zoomArray;
         };
